@@ -29,12 +29,8 @@
               italic = true;
               fg = "#fb4934";
             };
-            Type = {
-              fg = "#fabd2f";
-            };
-            Structure = {
-              fg = "#fabd2f";
-            };
+            Type = { fg = "#fabd2f"; };
+            Structure = { fg = "#fabd2f"; };
             Macro = {
               italic = true;
               fg = "#b16286";
@@ -76,8 +72,9 @@
                 rust-analyzer.enable = true;
                 rnix-lsp.enable = true;
               };
-
             };
+            leap = { enable = true; };
+            mini = { enable = true; };
             noice.enable = true;
             treesitter = {
               enable = true;
@@ -116,8 +113,7 @@
           cd $out
           ln -s ${self} nvim
         '';
-      in
-      {
+      in rec {
         packages = rec {
           nvim = pkgs.writeShellApplication {
             name = "nvim";
@@ -132,6 +128,7 @@
           };
           default = nvim;
         };
+        overlays.default = (self: super: { nvim = packages.default; });
 
         checks = {
           # Run `nix flake check .` to verify that your config is not broken
