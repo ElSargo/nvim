@@ -44,6 +44,10 @@
             telescope.enable = true;
             nix.enable = true;
             nvim-autopairs.enable = true;
+            notify = {
+              enable = true;
+              backgroundColour = "#00000000";
+            };
             lualine = {
               enable = true;
               sectionSeparators = {
@@ -58,7 +62,7 @@
             };
             coq-nvim = {
               enable = true;
-              autoStart = true;
+              autoStart = "shut-up";
               recommendedKeymaps = true;
               installArtifacts = true;
             };
